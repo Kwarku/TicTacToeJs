@@ -1,0 +1,13 @@
+img{
+    height: 90px;
+}
+
+.button{
+    border-color: black;
+
+}
+.picked-button{
+    border-color: red;
+    height: 110px;
+
+}
