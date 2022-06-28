@@ -26,6 +26,7 @@ Utrzymana w przyjemnym dla oka stylu i estetyce.
 
 
 ###ToDo:
+[-] zmiana wyboru komputera z napisu na ikonę
 
 [-] drukowanie wyników
 

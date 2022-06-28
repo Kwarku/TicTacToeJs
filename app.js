@@ -33,6 +33,8 @@ possibleChoices.forEach(abcd => abcd.addEventListener('click', (e) => {
 
     // pokazanie wyboru usera
     userChoice = e.currentTarget.id
+    document.getElementById("YOU").src=(e.currentTarget.id + ".png");
+
     // playerChoiceField.innerHTML = userChoice
 
     // wylosowanie wyboru komputera
@@ -54,7 +56,10 @@ function clearPrevChoice(){
 function generateComputerChoice(){
     randomNumber = Math.floor(Math.random() * possibleChoices.length)
     computerChoice = possibleChoices[randomNumber].id
-    computerChoiceField.innerHTML = computerChoice
+    // computerChoiceField.innerHTML = computerChoice
+    // let filename = possibleChoices[randomNumber].id + ".png"
+    document.getElementById("ABC").src=(possibleChoices[randomNumber].id + ".png");
+
 }
 
 function checkResult(){
@@ -103,12 +108,7 @@ function setClickedButtonStyle(button){
 }
 
 function printResults(){
-    // nowe opcje. 
 
-    // drukowanie wyników
-    // wyliczanie procentowego wygrywania
-    // stylizacja całej gry 
-    // skórki jasna / ciemna 
 
 }
 
