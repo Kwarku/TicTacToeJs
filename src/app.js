@@ -32,9 +32,7 @@ possibleChoices.forEach(abcd => abcd.addEventListener('click', (e) => {
 
 
     // pokazanie wyboru usera
-    userChoice = e.currentTarget.id
-    let filename = "../img/" + e.currentTarget.id + ".png"
-    document.getElementById("YOU").src=(filename);
+    handleUserChoice(e)
 
     // playerChoiceField.innerHTML = userChoice
 
@@ -52,6 +50,12 @@ possibleChoices.forEach(abcd => abcd.addEventListener('click', (e) => {
 
 function clearPrevChoice(){
     prevChoice.className = "button"
+}
+
+function handleUserChoice(e){
+    userChoice = e.currentTarget.id
+    let filename = "../img/" + e.currentTarget.id + ".png"
+    document.getElementById("YOU").src=(filename);
 }
 
 function generateComputerChoice(){
@@ -110,8 +114,10 @@ function setClickedButtonStyle(button){
 }
 
 function printResults(){
-
-
+    document.getElementById('player-wins').innerHTML = wins
+    document.getElementById('computer-wins').innerHTML = loses
+    document.getElementById('draws').innerHTML = draws
+    document.getElementById('total').innerHTML = games
 }
 
 
