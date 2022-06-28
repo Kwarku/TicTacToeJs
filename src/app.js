@@ -33,7 +33,8 @@ possibleChoices.forEach(abcd => abcd.addEventListener('click', (e) => {
 
     // pokazanie wyboru usera
     userChoice = e.currentTarget.id
-    document.getElementById("YOU").src=(e.currentTarget.id + ".png");
+    let filename = "../img/" + e.currentTarget.id + ".png"
+    document.getElementById("YOU").src=(filename);
 
     // playerChoiceField.innerHTML = userChoice
 
@@ -57,8 +58,9 @@ function generateComputerChoice(){
     randomNumber = Math.floor(Math.random() * possibleChoices.length)
     computerChoice = possibleChoices[randomNumber].id
     // computerChoiceField.innerHTML = computerChoice
-    // let filename = possibleChoices[randomNumber].id + ".png"
-    document.getElementById("ABC").src=(possibleChoices[randomNumber].id + ".png");
+    let filename = "../img/" + possibleChoices[randomNumber].id + ".png"
+
+    document.getElementById("ABC").src=(filename);
 
 }
 
