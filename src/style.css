@@ -11,8 +11,11 @@ img{
     height: 110px;
 
 }
-.result-image{
+.result-image-hidden{
     visibility: hidden;
+}
+.result-image{
+    visibility: visible;
 }
 
 

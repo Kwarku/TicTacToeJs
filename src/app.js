@@ -30,8 +30,8 @@ const draw = "It's a draw!"
 
 
 possibleChoices.forEach(abcd => abcd.addEventListener('click', (e) => {
-    Array.from(document.getElementsByClassName("result-image")).forEach(image => {
-        image.style.visibility="visible"
+    Array.from(document.getElementsByClassName("result-image-hidden")).forEach(image => {
+        image.className="result-image"
     } )
 
     //usunięcie poprzedniego koloru

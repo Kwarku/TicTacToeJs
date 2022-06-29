@@ -22,13 +22,14 @@ Utrzymana w przyjemnym dla oka stylu i estetyce.
 
 [+] sprawdzenie wyborów i wyłonienie zwycięscy
 
-[-/+] podliczenie wyników
+[+] podliczenie wyników
 
+[+] zmiana wyboru komputera z napisu na ikonę
+
+[+] drukowanie wyników
 
 ###ToDo:
-[-] zmiana wyboru komputera z napisu na ikonę
-
-[-] drukowanie wyników
+[-] tabela wyników zamiast zwykłego wyświetlania
 
 [-] wyliczanie procentowego wygrywania
 
