@@ -29,48 +29,22 @@ const draw = "It's a draw!"
 
 
 
-possibleChoices.forEach(abcd => abcd.addEventListener('click', (e) => {
+possibleChoices.forEach(pickedButton => pickedButton.addEventListener('click', (event) => {
+    showPLayers()
+    clearPrevChoice()
+    handleUserChoice(event)
+    generateComputerChoice()
+    let gameState = checkResult()    
+    showWiner(gameState)
+    setClickedButtonStyle(pickedButton)
+    printResults()
+}))
+
+function showPLayers(){
     Array.from(document.getElementsByClassName("result-image-hidden")).forEach(image => {
         image.className="result-image"
     } )
-
-    //usunięcie poprzedniego koloru
-   clearPrevChoice()
-
-
-    // pokazanie wyboru usera
-    handleUserChoice(e)
-
-    // playerChoiceField.innerHTML = userChoice
-
-    // wylosowanie wyboru komputera
-    generateComputerChoice()
-
-    // sprawdzenie rezultatu
-    let abc = checkResult()
-
-    if (abc === 2) {
-
-    }else {
-        winnerId = abc === 0 ? "YOU" : "ABC"
-        let elementById = document.getElementById(winnerId);
-        elementById.style.border ="solid";
-        elementById.style.borderColor ="blue";
-
-        // elementById.style.visibility="visible"
-
-    }
-
-    // 0 - player win
-    // 1 - computer win
-    // 2 - draw
-
-
-    // ustwienie koloru na wybranym buttonie
-    setClickedButtonStyle(abcd)
-
-    printResults()
-}))
+}
 
 function clearPrevChoice(){
     prevChoice.className = "button"
@@ -87,7 +61,6 @@ function handleUserChoice(e){
 function generateComputerChoice(){
     randomNumber = Math.floor(Math.random() * possibleChoices.length)
     computerChoice = possibleChoices[randomNumber].id
-    // computerChoiceField.innerHTML = computerChoice
     let filename = "../img/" + possibleChoices[randomNumber].id + ".png"
     document.getElementById("ABC").src=(filename);
 
@@ -128,6 +101,17 @@ function checkResult(){
     resultField.innerHTML = result
 
     return isWin ? 0 :1
+}
+function showWiner(gameState){
+    // 0 - player win
+    // 1 - computer win
+    // 2 - draw
+    if (gameState !== 2) {
+        winnerId = gameState === 0 ? "YOU" : "ABC"
+        let elementById = document.getElementById(winnerId);
+        elementById.style.border ="solid";
+        elementById.style.borderColor ="blue";
+    }
 }
 
 function setClickedButtonStyle(button){
