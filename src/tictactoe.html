@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Kamien papier</title>
+    <script defer src="tictactoe.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="score-table">
+    <table>
+        <tr>
+            <th>You</th>
+            <th>Comp</th>
+            <th>Draws</th>
+            <th>Games</th>
+        </tr>
+        <tr>
+            <th><span id="player-wins"></span></th>
+            <th><span id="computer-wins"></span></th>
+            <th><span id="draws"></span></th>
+            <th><span id="total"></span></th>
+        </tr>
+    </table>
+</div>
+
+
+
+<div class="players">
+    <div class="result">
+        <h3><span id="result"></span></h3>
+    </div>
+    <div class="player">
+        <h2>Computer</h2>
+        <img class="result-image-hidden" id="ABC" src="../img/paper.png"/>
+    </div>
+    <div class="player"><H1>VS</H1></div>
+    <div class="player">
+        <h2>You</h2>
+        <img class="result-image-hidden" id="YOU" src="../img/paper.png"/>
+    </div>
+</div>
+
+
+<div>
+    <button class="button" id="rock"><img src='../img/rock.png'/></button>
+    <button class="button" id="paper"><img src='../img/paper.png'/></button>
+    <button class="button" id="scissors"><img src='../img/scissors.png'/></button>
+</div>
+</body>
+</html>
