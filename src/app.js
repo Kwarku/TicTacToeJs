@@ -18,6 +18,7 @@ let loses=0
 let draws=0
 let games=0
 let a
+let winnerId = "YOU"
 
 const paper = 'paper'
 const rock = 'rock'
@@ -26,7 +27,13 @@ const win = 'You win!'
 const lose = 'You lose!'
 const draw = "It's a draw!"
 
+
+
 possibleChoices.forEach(abcd => abcd.addEventListener('click', (e) => {
+    Array.from(document.getElementsByClassName("result-image")).forEach(image => {
+        image.style.visibility="visible"
+    } )
+
     //usunięcie poprzedniego koloru
    clearPrevChoice()
 
@@ -40,7 +47,27 @@ possibleChoices.forEach(abcd => abcd.addEventListener('click', (e) => {
     generateComputerChoice()
 
     // sprawdzenie rezultatu
-    checkResult()
+    let abc = checkResult()
+    console.log(abc)
+
+    if (abc === 2) {
+
+    }else {
+        winnerId = abc === 0 ? "YOU" : "ABC"
+        console.log(String(winnerId))
+        let elementById = document.getElementById(String(winnerId));
+        console.log(elementById)
+        elementById.style.border ="solid";
+        elementById.style.borderColor ="blue";
+
+        // elementById.style.visibility="visible"
+
+    }
+
+    // 0 - player win
+    // 1 - computer win
+    // 2 - draw
+
 
     // ustwienie koloru na wybranym buttonie
     setClickedButtonStyle(abcd)
@@ -50,6 +77,9 @@ possibleChoices.forEach(abcd => abcd.addEventListener('click', (e) => {
 
 function clearPrevChoice(){
     prevChoice.className = "button"
+    let elementById = document.getElementById(String(winnerId));
+    console.log(elementById)
+    elementById.style.border ="none";
 }
 
 function handleUserChoice(e){
@@ -63,7 +93,6 @@ function generateComputerChoice(){
     computerChoice = possibleChoices[randomNumber].id
     // computerChoiceField.innerHTML = computerChoice
     let filename = "../img/" + possibleChoices[randomNumber].id + ".png"
-
     document.getElementById("ABC").src=(filename);
 
 }
@@ -75,7 +104,7 @@ function checkResult(){
         resultField.innerHTML = draw
         draws++
         console.log('wins:',wins," loses:",loses," games:",games," draws:",draws);
-        return
+        return 2
     }
     else if(computerChoice === rock && userChoice === paper){
         isWin=true 
@@ -103,8 +132,8 @@ function checkResult(){
 
     resultField.innerHTML = result
 
-    console.log('wins:',wins," loses:",loses," games:",games," draws:",draws);
-    return result
+    // console.log('wins:',wins," loses:",loses," games:",games," draws:",draws);
+    return isWin ? 0 :1
 }
 
 function setClickedButtonStyle(button){
