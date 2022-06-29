@@ -28,8 +28,10 @@ Utrzymana w przyjemnym dla oka stylu i estetyce.
 
 [+] drukowanie wyników
 
+[+] tabela wyników zamiast zwykłego wyświetlania
+
+
 ###ToDo:
-[-] tabela wyników zamiast zwykłego wyświetlania
 
 [-] wyliczanie procentowego wygrywania
 
