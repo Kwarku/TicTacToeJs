@@ -48,15 +48,12 @@ possibleChoices.forEach(abcd => abcd.addEventListener('click', (e) => {
 
     // sprawdzenie rezultatu
     let abc = checkResult()
-    console.log(abc)
 
     if (abc === 2) {
 
     }else {
         winnerId = abc === 0 ? "YOU" : "ABC"
-        console.log(String(winnerId))
-        let elementById = document.getElementById(String(winnerId));
-        console.log(elementById)
+        let elementById = document.getElementById(winnerId);
         elementById.style.border ="solid";
         elementById.style.borderColor ="blue";
 
@@ -78,7 +75,6 @@ possibleChoices.forEach(abcd => abcd.addEventListener('click', (e) => {
 function clearPrevChoice(){
     prevChoice.className = "button"
     let elementById = document.getElementById(String(winnerId));
-    console.log(elementById)
     elementById.style.border ="none";
 }
 
@@ -103,7 +99,6 @@ function checkResult(){
     if(computerChoice === userChoice){
         resultField.innerHTML = draw
         draws++
-        console.log('wins:',wins," loses:",loses," games:",games," draws:",draws);
         return 2
     }
     else if(computerChoice === rock && userChoice === paper){
@@ -132,7 +127,6 @@ function checkResult(){
 
     resultField.innerHTML = result
 
-    // console.log('wins:',wins," loses:",loses," games:",games," draws:",draws);
     return isWin ? 0 :1
 }
 
