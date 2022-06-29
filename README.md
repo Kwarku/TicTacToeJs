@@ -8,6 +8,8 @@ Utrzymana w przyjemnym dla oka stylu i estetyce.
 [+] Pierwsza gra (kamień papier)
 
 ###ToDo:
+[-] stowrzenie pierwszej strony - z wyborem gier - mappingami - routingiem itd
+
 [-] mechanizm przełącznia gier
 
 [-] druga gra (memory)
