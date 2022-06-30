@@ -27,6 +27,9 @@ const win = 'You win!'
 const lose = 'You lose!'
 const draw = "It's a draw!"
 
+document.getElementById("homePageButton").addEventListener('click', () => {
+    window.location.href = "../index.html"
+})
 
 
 possibleChoices.forEach(pickedButton => pickedButton.addEventListener('click', (event) => {
@@ -54,14 +57,14 @@ function clearPrevChoice(){
 
 function handleUserChoice(e){
     userChoice = e.currentTarget.id
-    let filename = "../img/" + e.currentTarget.id + ".png"
+    let filename = "../../img/" + e.currentTarget.id + ".png"
     document.getElementById("YOU").src=(filename);
 }
 
 function generateComputerChoice(){
     randomNumber = Math.floor(Math.random() * possibleChoices.length)
     computerChoice = possibleChoices[randomNumber].id
-    let filename = "../img/" + possibleChoices[randomNumber].id + ".png"
+    let filename = "../../img/" + possibleChoices[randomNumber].id + ".png"
     document.getElementById("ABC").src=(filename);
 
 }
