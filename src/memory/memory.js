@@ -5,7 +5,10 @@ document.getElementById("homePageButton").addEventListener('click', () => {
 
 const imageElements = Array.from(document.querySelectorAll("img"));
 let numberOfElement = 0
+let moves = 0
 let isPicked = false
+let isClicked = false
+let isWin = false
 
 let firstSelectClass
 let firstSelectId
@@ -18,7 +21,12 @@ function log() {
 
 imageElements.forEach(image => image.addEventListener('click', (event) => {
 
-    if (!isPicked) {
+    if(isClicked){
+        alert("zwolnij");
+
+    }else if(isWin){
+
+    }else if (!isPicked) {
         console.log("pierwsze użycie");
 
         firstSelectId = event.currentTarget.id
@@ -30,15 +38,17 @@ imageElements.forEach(image => image.addEventListener('click', (event) => {
         if (firstSelectId === event.currentTarget.id) {
             console.log("błąd");
         } else {
+            moves++
             console.log("drugie użycie");
             secondSelectId = event.currentTarget.id
             secondSelectClass = event.currentTarget.className
             document.getElementById(secondSelectId).src = "../../img/" + secondSelectClass + ".png"
 
             if (firstSelectClass !== secondSelectClass) {
+                isClicked = true
                 setTimeout(() => {
                     checkResult()
-                }, 3000);
+                }, 1500);
             }else {
                 numberOfElement +=2
                 console.log("reset");
@@ -47,11 +57,22 @@ imageElements.forEach(image => image.addEventListener('click', (event) => {
                 secondSelectClass = undefined
                 secondSelectId = undefined
                 isPicked = false
+                if(numberOfElement === imageElements.length){
+                    document.getElementById("score").innerHTML="wygrana"
+                    isWin=true
+                    let resetButton = document.getElementById("resetButton")
+                    resetButton.style.visibility="visible"
+                    resetButton.addEventListener("click", () => {
+                        resetGame()
+                        isWin=false
+                    })
+                }
             }
 
         }
     }
 
+    console.log(moves);
 
 }));
 
@@ -73,12 +94,12 @@ function checkResult() {
     secondSelectClass = undefined
     secondSelectId = undefined
     isPicked = false
+    isClicked=false
 }
+ function resetGame(){
+    // resetujemy wszystkie obrazki
+    // losujemy ich pozycje
+    // reset wszystkich zmiennych i flag i wyników
+    // ukrycie przycisku
 
-
-// na cyzm polega ta gra.
-// mamy sobie X obrazków zakrytych
-// klikamy jeden obrazek, odkrywa się
-// klikamy drugi drugi odkrywa się
-// jeżeli są takie same, zostają odkryte / znikają
-// jezeli są inne, zakrywają się oba
+ }
