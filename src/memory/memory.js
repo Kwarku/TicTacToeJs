@@ -17,9 +17,21 @@ let firstSelectId
 let secondSelectClass
 let secondSelectId
 
-function log() {
-    console.log("1-claas:", firstSelectClass, "1-id:", firstSelectId, "| 2-class:", secondSelectClass, "2-id: ", secondSelectId, "numer of pic:", numerOfPictureSelected)
+function generateGameBoard(){
+    var imgRange = [
+        "pic1","pic2","pic3","pic4","pic5","pic6",
+        "pic1","pic2","pic3","pic4","pic5","pic6"
+        ]
+    
+    let randomImgNumber
+
+    imageElements.forEach(img => {
+        randomImgNumber = Math.floor(Math.random()*imgRange.length)   
+        img.className=imgRange[randomImgNumber]
+        imgRange.splice(randomImgNumber,1)
+    })
 }
+generateGameBoard()
 
 imageElements.forEach(image => image.addEventListener('click', (event) => {
 
@@ -29,7 +41,6 @@ imageElements.forEach(image => image.addEventListener('click', (event) => {
     }else if(isWin){
 
     }else if (!isPicked) {
-        console.log("pierwsze użycie");
 
         firstSelectId = event.currentTarget.id
         firstSelectClass = event.currentTarget.className
@@ -41,7 +52,6 @@ imageElements.forEach(image => image.addEventListener('click', (event) => {
             console.log("błąd");
         } else {
             moves++
-            console.log("drugie użycie");
             secondSelectId = event.currentTarget.id
             secondSelectClass = event.currentTarget.className
             document.getElementById(secondSelectId).src = "../../img/" + secondSelectClass + ".png"
@@ -50,17 +60,16 @@ imageElements.forEach(image => image.addEventListener('click', (event) => {
                 isClicked = true
                 setTimeout(() => {
                     checkResult()
-                }, 1500);
+                }, 600);
             }else {
                 numberOfElement +=2
-                console.log("reset");
                 firstSelectClass = undefined
                 firstSelectId = undefined
                 secondSelectClass = undefined
                 secondSelectId = undefined
                 isPicked = false
                 if(numberOfElement === imageElements.length){
-                    document.getElementById("score").innerHTML="wygrana"
+                    document.getElementById("score").innerHTML="Wygrana! Twoj wynik to: " + moves + "ruchow"
                     isWin=true
                     resetButton.style.visibility="visible"
                     resetButton.addEventListener("click", () => {
@@ -81,9 +90,8 @@ function checkResult() {
     // check
     if (secondSelectClass === firstSelectClass) {
 
-        console.log("sukces")
+        console.log("AAAA")
     } else {
-        console.log("nie ma suckesu")
         document.getElementById(firstSelectId).src = "../../img/block.png"
         document.getElementById(secondSelectId).src = "../../img/block.png"
 
@@ -113,6 +121,5 @@ function checkResult() {
      resetButton.style.visibility="hidden"
      document.getElementById("score").innerHTML=""
 
-    // losujemy ich pozycje
-
+     generateGameBoard()
  }
