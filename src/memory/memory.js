@@ -4,6 +4,8 @@ document.getElementById("homePageButton").addEventListener('click', () => {
 
 
 const imageElements = Array.from(document.querySelectorAll("img"));
+const resetButton = document.getElementById("resetButton")
+
 let numberOfElement = 0
 let moves = 0
 let isPicked = false
@@ -60,7 +62,6 @@ imageElements.forEach(image => image.addEventListener('click', (event) => {
                 if(numberOfElement === imageElements.length){
                     document.getElementById("score").innerHTML="wygrana"
                     isWin=true
-                    let resetButton = document.getElementById("resetButton")
                     resetButton.style.visibility="visible"
                     resetButton.addEventListener("click", () => {
                         resetGame()
@@ -96,10 +97,22 @@ function checkResult() {
     isPicked = false
     isClicked=false
 }
+
  function resetGame(){
-    // resetujemy wszystkie obrazki
+    imageElements.forEach(img => {
+        img.src = "../../img/block.png"
+    })
+     firstSelectClass = undefined
+     firstSelectId = undefined
+     secondSelectClass = undefined
+     secondSelectId = undefined
+     isPicked = false
+     isClicked=false
+     moves = 0
+     numberOfElement = 0;
+     resetButton.style.visibility="hidden"
+     document.getElementById("score").innerHTML=""
+
     // losujemy ich pozycje
-    // reset wszystkich zmiennych i flag i wyników
-    // ukrycie przycisku
 
  }
