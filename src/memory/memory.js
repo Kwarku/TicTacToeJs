@@ -17,30 +17,30 @@ let firstSelectId
 let secondSelectClass
 let secondSelectId
 
-function generateGameBoard(){
+function generateGameBoard() {
     var imgRange = [
-        "pic1","pic2","pic3","pic4","pic5","pic6",
-        "pic1","pic2","pic3","pic4","pic5","pic6"
-        ]
-    
+        "pic1", "pic2", "pic3", "pic4", "pic5", "pic6",
+        "pic1", "pic2", "pic3", "pic4", "pic5", "pic6"
+    ]
+
     let randomImgNumber
 
     imageElements.forEach(img => {
-        randomImgNumber = Math.floor(Math.random()*imgRange.length)   
-        img.className=imgRange[randomImgNumber]
-        imgRange.splice(randomImgNumber,1)
+        randomImgNumber = Math.floor(Math.random() * imgRange.length)
+        img.className = imgRange[randomImgNumber]
+        imgRange.splice(randomImgNumber, 1)
     })
 }
 generateGameBoard()
 
 imageElements.forEach(image => image.addEventListener('click', (event) => {
 
-    if(isClicked){
+    if (isClicked) {
         alert("zwolnij");
 
-    }else if(isWin){
+    } else if (isWin) {
 
-    }else if (!isPicked) {
+    } else if (!isPicked) {
 
         firstSelectId = event.currentTarget.id
         firstSelectClass = event.currentTarget.className
@@ -61,29 +61,26 @@ imageElements.forEach(image => image.addEventListener('click', (event) => {
                 setTimeout(() => {
                     checkResult()
                 }, 600);
-            }else {
-                numberOfElement +=2
+            } else {
+                numberOfElement += 2
                 firstSelectClass = undefined
                 firstSelectId = undefined
                 secondSelectClass = undefined
                 secondSelectId = undefined
                 isPicked = false
-                if(numberOfElement === imageElements.length){
-                    document.getElementById("score").innerHTML="Wygrana! Twoj wynik to: " + moves + "ruchow"
-                    isWin=true
-                    resetButton.style.visibility="visible"
+                if (numberOfElement === imageElements.length) {
+                    document.getElementById("score").innerHTML = "Wygrana! Twoj wynik to: " + moves + "ruchow"
+                    isWin = true
+                    resetButton.style.visibility = "visible"
                     resetButton.addEventListener("click", () => {
                         resetGame()
-                        isWin=false
+                        isWin = false
                     })
                 }
             }
 
         }
     }
-
-    console.log(moves);
-
 }));
 
 function checkResult() {
@@ -103,23 +100,23 @@ function checkResult() {
     secondSelectClass = undefined
     secondSelectId = undefined
     isPicked = false
-    isClicked=false
+    isClicked = false
 }
 
- function resetGame(){
+function resetGame() {
     imageElements.forEach(img => {
         img.src = "../../img/block.png"
     })
-     firstSelectClass = undefined
-     firstSelectId = undefined
-     secondSelectClass = undefined
-     secondSelectId = undefined
-     isPicked = false
-     isClicked=false
-     moves = 0
-     numberOfElement = 0;
-     resetButton.style.visibility="hidden"
-     document.getElementById("score").innerHTML=""
+    firstSelectClass = undefined
+    firstSelectId = undefined
+    secondSelectClass = undefined
+    secondSelectId = undefined
+    isPicked = false
+    isClicked = false
+    moves = 0
+    numberOfElement = 0;
+    resetButton.style.visibility = "hidden"
+    document.getElementById("score").innerHTML = ""
 
-     generateGameBoard()
- }
+    generateGameBoard()
+}
